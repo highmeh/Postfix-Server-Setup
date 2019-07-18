@@ -385,7 +385,7 @@ function add_alias(){
 }
 
 function get_dns_entries(){
-	extip=$(ifconfig|grep 'Link encap\|inet '|awk '!/Loopback|:127./'|tr -s ' '|grep 'inet'|tr ':' ' '|cut -d" " -f4)
+	extip=$(curl ipecho.net/plain)
 	domain=$(ls /etc/opendkim/keys/ | head -1)
 	fields=$(echo "${domain}" | tr '.' '\n' | wc -l)
 	dkimrecord=$(cut -d '"' -f 2 "/etc/opendkim/keys/${domain}/mail.txt" | tr -d "[:space:]")
@@ -525,9 +525,9 @@ setupSSH(){
 
 function Install_GoPhish {
 	apt-get install unzip > /dev/null 2>&1
-	wget https://github.com/gophish/gophish/releases/download/v0.4.0/gophish-v0.4-linux-64bit.zip
-	unzip gophish-v0.4-linux-64bit.zip
-	cd gophish-v0.4-linux-64bit
+	wget https://github.com/gophish/gophish/releases/download/0.7.1/gophish-v0.7.1-linux-64bit.zip
+	unzip gophish-v0.7.1-linux-64bit.zip
+	cd gophish-v0.7.1-linux-64bit
         sed -i 's/"listen_url" : "127.0.0.1:3333"/"listen_url" : "0.0.0.0:3333"/g' config.json
 	read -r -p "Do you want to add an SSL certificate to your GoPhish? [y/N] " response
 	case "$response" in
