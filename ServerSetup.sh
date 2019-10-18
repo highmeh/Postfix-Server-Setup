@@ -525,7 +525,7 @@ setupSSH(){
 
 function Install_GoPhish {
 	apt-get install unzip > /dev/null 2>&1
-	wget https://github.com/gophish/gophish/releases/download/0.7.1/gophish-v0.7.1-linux-64bit.zip
+	wget https://github.com/gophish/gophish/releases/download/0.8.0/gophish-v0.8.0-linux-64bit.zip
 	unzip gophish-v0.7.1-linux-64bit.zip
 	cd gophish-v0.7.1-linux-64bit
         sed -i 's/"listen_url" : "127.0.0.1:3333"/"listen_url" : "0.0.0.0:3333"/g' config.json
